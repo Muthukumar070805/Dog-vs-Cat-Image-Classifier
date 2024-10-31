@@ -1,5 +1,5 @@
-from keras.models import Sequential
-from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from keras.models import Sequential # type: ignore
+from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense # type: ignore
 import numpy as np
 import cv2 as cv
 import random
@@ -50,7 +50,17 @@ def predict_image(model, image_path):
         return "Cat"
     else:
         return "Dog"
-value = input("Enter the image number: ")
-image_path = f"C:\\Users\\admin\\Documents\\AI_project\\dogs-vs-cats\\test1\\test1\\{value}.jpg"
-result = predict_image(model, image_path)
-print(f"The image is predicted to be a: {result}")
+choice = 1
+while choice: 
+    try:
+        value = input("Enter the image paths: ").strip()
+        image_path = f"{value}"
+        
+        result = predict_image(model, image_path)
+        print(f"The image is predicted to be a: {result}")
+        
+    except FileNotFoundError:
+        print("Error: The file was not found. Please enter a valid image path.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    choice = int(input("Enter 1 to Continue or 0 to Exit: "))
