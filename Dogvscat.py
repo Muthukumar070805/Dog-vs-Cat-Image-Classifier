@@ -2,10 +2,7 @@ from keras.models import Sequential # type: ignore
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense # type: ignore
 import numpy as np
 import cv2 as cv
-import random
-import matplotlib.pyplot as plt
 import os 
-import pandas as pd 
 size=100
 DIREC=r'C:\Users\admin\Documents\dogs-vs-cats\train'
 data=[]
@@ -55,7 +52,7 @@ while choice:
     try:
         value = input("Enter the image paths: ").strip()
         image_path = f"{value}"
-        
+
         result = predict_image(model, image_path)
         print(f"The image is predicted to be a: {result}")
         
